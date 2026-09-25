@@ -1,4 +1,4 @@
-const {Model,DataTypes} = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 class Livro extends Model {}
 
@@ -9,35 +9,35 @@ Livro.init(
             allowNull: false,
             unique: true,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         titulo: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
         },
         isbn: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
         },
         ano: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
         },
         disponivel: {
             type: DataTypes.BOOLEAN,
-            defaultValue: true
+            defaultValue: true,
         },
         autorId: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        }
+            allowNull: false,
+        },
     },
     {
         sequelize,
         modelName: "Livro",
-        tableName: "livros"
-    }
+        tableName: "livros",
+    },
 );
 
 module.exports = Livro;

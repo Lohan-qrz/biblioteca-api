@@ -13,7 +13,7 @@ class LivroController {
     async criar(req, res) {
         try {
             const livro = await this.service.criar(req.body);
-            req.status(201).json(livro);
+            res.status(201).json(livro);
         } catch (error){
             res.status(500).json({
                 erro: "Erro ao criar livro"
@@ -46,7 +46,6 @@ class LivroController {
         } catch(error) {
             res.status(500).json({
                 erro: "Erro ao buscar todos os livros",
-                detalhe: error.message
             });
         };
     };

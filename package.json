@@ -4,5 +4,9 @@
     "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1"
   },
-  "type": "commonjs"
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+}
 }

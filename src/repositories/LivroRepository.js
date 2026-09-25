@@ -39,7 +39,34 @@ class LivroRepository {
         });
     }
 
-    // ...
+    async atualizar(id, dados) {
+        return await livro.update(dados, {
+            where: {
+                id: id,
+            },
+        });
+    }
+
+    async excluir(id) {
+        return await livro.destroy({
+            where: {
+                id: id,
+            },
+        });
+    }
+
+    async adicionarCategoria(livroId, categoriaId) {
+        const livroEncontrado = await livro.findByPk(livroId);
+        const categoriaEncontrada = await categoria.findByPk(categoriaId);
+
+        if (!livroEncontrado || !categoriaEncontrada) {
+            return null;
+        }
+
+        await livroEncontrado.addCategoria(categoriaEncontrada);
+
+        return livroEncontrado;
+    }
 }
 
 module.exports = LivroRepository;

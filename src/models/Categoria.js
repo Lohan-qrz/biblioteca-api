@@ -1,4 +1,4 @@
-const {Model,DataTypes} = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 class Categoria extends Model {}
 
@@ -9,23 +9,23 @@ Categoria.init(
             allowNull: false,
             unique: true,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
         },
         nome: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
         },
         descricao: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
     },
     {
         sequelize,
         modelName: "Categoria",
-        tableName: "categorias"
-    }
+        tableName: "categorias",
+    },
 );
 
 module.exports = Categoria;
