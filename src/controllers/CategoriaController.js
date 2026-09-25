@@ -64,9 +64,9 @@ class CategoriaController {
 
     async excluir(req, res) {
         try {
-            const resultado = await this.service.excluir(req.params.id);
+            await this.service.excluir(req.params.id);
 
-            res.json(resultado);
+            res.status(204).send();
         } catch(error) {
             res.status(500).json({
                 erro: "Erro ao excluir categoria"

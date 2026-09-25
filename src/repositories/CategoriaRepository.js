@@ -14,11 +14,12 @@ class CategoriaRepository {
     };
 
     async atualizar(id, dados) {
-        return await categoria.update(dados, {
+        await categoria.update(dados, {
             where: {
                 id: id
             }
         });
+        return categoria.findByPk(id);
     };
 
     async excluir(id) {

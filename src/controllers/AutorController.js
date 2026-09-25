@@ -58,16 +58,17 @@ class AutorController {
             res.json(resultado);
         } catch(error) {
             res.status(500).json({
-                erro: "Erro ao atualizar autor"
+                erro: "Erro ao atualizar autor",
+                detalhe: error.message
             });
         };
     };
 
     async excluir(req, res) {
         try {
-            const resultado = await this.service.excluir(req.params.id);
+            await this.service.excluir(req.params.id);
 
-            res.json(resultado);
+            res.status(204).send();
         } catch(error) {
             res.status(500).json({
                 erro: "Erro ao excluir autor"

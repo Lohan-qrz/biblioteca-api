@@ -40,11 +40,12 @@ class LivroRepository {
     }
 
     async atualizar(id, dados) {
-        return await livro.update(dados, {
+        await livro.update(dados, {
             where: {
                 id: id,
             },
         });
+        return await livro.findByPk(id);
     }
 
     async excluir(id) {

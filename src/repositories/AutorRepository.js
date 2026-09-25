@@ -13,11 +13,12 @@ class AutorRepository {
     };
 
     async atualizar(id, dados) {
-        return await autor.update(dados, {
+        await autor.update(dados, {
             where: {
                 id: id
             }
         });
+        return await autor.findByPk(id);
     };
 
     async excluir(id) {

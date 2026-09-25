@@ -8,6 +8,7 @@ class LivroController {
         this.buscarPorId = this.buscarPorId.bind(this);
         this.atualizar = this.atualizar.bind(this);
         this.excluir = this.excluir.bind(this);
+        this.adicionarCategoria = this.adicionarCategoria.bind(this);
     }
 
     async criar(req, res) {
@@ -82,9 +83,9 @@ class LivroController {
 
     async excluir(req, res) {
         try {
-            const resultado = await this.service.excluir(req.params.id);
+            await this.service.excluir(req.params.id);
 
-            res.json(resultado);
+            res.status(204).send();
         } catch(error) {
             res.status(500).json({
                 error: "Erro ao excluir livro"
@@ -105,7 +106,8 @@ class LivroController {
             res.json(resultado);
         } catch(error) {
             res.status(500).json({
-                erro: "Erro ao adicionar categoria"
+                erro: "Erro ao adicionar categoria",
+                detalhe: error.message
             });
         };
     };
